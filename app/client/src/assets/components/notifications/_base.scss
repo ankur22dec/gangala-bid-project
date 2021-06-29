@@ -1,0 +1,18 @@
+//  Core
+
+.alerts-alternate {
+  .alert {
+    background: $white;
+    border-width: 2px;
+    @include border-radius($border-radius-sm);
+    border-left-width: 6px;
+  }
+}
+
+// SweetAlert
+
+.swal2-modal {
+  box-shadow: $modal-content-box-shadow-xs;
+  @include border-radius($modal-content-border-radius);
+  background: $modal-content-bg;
+}

@@ -1,0 +1,96 @@
+// Sidebar menu dark color scheme
+
+.app-sidebar {
+
+  &--overlay {
+    &:after {
+      content: '';
+      background: $black;
+      opacity: .45;
+      z-index: 3;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    & > * {
+      z-index: 4;
+    }
+  }
+
+  &--dark {
+    .sidebar-navigation {
+
+      .sidebar-menu-box {
+        background: rgba($black, .15);
+      }
+
+      .sidebar-header {
+        color: rgba($white, .35);
+      }
+
+      ul {
+        li {
+          & > a {
+            color: rgba($white, .65);
+
+            .sidebar-icon {
+              & > * {
+                color: $white;
+                opacity: .3;
+              }
+            }
+          }
+
+          ul {
+            li {
+              a {
+                &::after {
+                  background: rgba($black, .2);
+                }
+
+                &:hover,
+                &.active {
+                  &::after {
+                    background: rgba($black, .5);
+                  }
+                }
+              }
+            }
+          }
+
+          & > a:hover,
+          & > a.active {
+            color: rgba($white, 1);
+            background: rgba($black, .15);
+
+            .sidebar-icon-indicator {
+              opacity: .7;
+            }
+
+            .sidebar-icon {
+              & > * {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.app-sidebar-collapsed {
+  .app-sidebar--dark:not(:hover) {
+    .app-sidebar--content {
+      .sidebar-navigation {
+        .sidebar-header {
+          &::after {
+            background: rgba($white, .15);
+          }
+        }
+      }
+    }
+  }
+}

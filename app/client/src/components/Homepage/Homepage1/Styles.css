@@ -1,0 +1,30 @@
+.search-bar {
+    position: absolute;
+    z-index: 5;
+    width: 100%; 
+    top: 45%; 
+}
+.search-box-main{
+    width: 90%
+}
+.desktop-search{
+    display: block;
+}
+.mobile-search{
+    display: none;
+}
+@media only screen and (max-width:480px) {
+    .desktop-search{
+        display: none;
+    }
+    .mobile-search{
+        display: block;
+    }
+    .search-bar {
+      position: static;
+      width: auto; 
+    }
+    .search-box-main{
+        width: 100%;
+    }
+  }

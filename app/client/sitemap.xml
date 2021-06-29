@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>http://gangala.in/</loc> </url>
+<url> <loc>http://gangala.in/Homepage</loc> </url>
+<url> <loc>http://gangala.in/Shop/:id</loc> </url>
+<url> <loc>http://gangala.in/productdetails/:id</loc> </url>
+<url> <loc>http://gangala.in/blog/:id</loc> </url>
+<url> <loc>http://gangala.in/updateAuction/:id</loc> </url>
+<url> <loc>http://gangala.in/PageLoginIllustration</loc> </url>
+<url> <loc>http://gangala.in/seller-registration</loc> </url>
+<url> <loc>http://gangala.in/PageError404</loc> </url>
+<url> <loc>http://gangala.in/ChatBot/:msg</loc> </url>
+<url> <loc>http://gangala.in/ChatBot</loc> </url>
+<url> <loc>http://gangala.in/Profile</loc> </url>
+<url> <loc>http://gangala.in/Userprofile</loc> </url>
+<url> <loc>http://gangala.in/Auctions</loc> </url>
+<url> <loc>http://gangala.in/Wishlist</loc> </url>
+<url> <loc>http://gangala.in/Orders</loc> </url>
+<url> <loc>http://gangala.in/Shop</loc> </url>
+<url> <loc>http://gangala.in/NewAcution</loc> </url>
+</urlset>

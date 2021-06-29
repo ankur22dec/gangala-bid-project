@@ -1,0 +1,49 @@
+//  Core
+
+.app-sidebar-spacer {
+  padding: 0 ($layout-spacer / 2);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  transition: $transition-base;
+  opacity: 1;
+  visibility: visible;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.sidebar-widget-footer {
+  position: relative;
+  padding: ($layout-spacer) 0 ($layout-spacer / 2);
+  height: 120px;
+
+  .sidebar-widget-btn {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    padding-top: ($layout-spacer / 2);
+  }
+
+  .sidebar-chart-wrapper {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    & > div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+// Modifiers
+
+@import "modifiers/collapsed";
+
+// Themes
+
+@import "themes/dark";

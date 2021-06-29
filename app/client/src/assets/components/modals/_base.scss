@@ -1,0 +1,19 @@
+//  Core
+
+.modal-content {
+  box-shadow: $modal-content-box-shadow-xs;
+}
+
+.modal-dark {
+  color: $white;
+
+  .close {
+    color: $white;
+    box-shadow: 0 0 0 transparent;
+  }
+
+  .modal-footer,
+  .modal-header {
+    border-color: rgba(255,255,255, .1);
+  }
+}

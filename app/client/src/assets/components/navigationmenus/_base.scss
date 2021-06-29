@@ -1,0 +1,294 @@
+// Variables
+
+$nav-item-icon-size:              28px;
+$nav-item-header-color:           $gray-700;
+$nav-item-header-font-size:       $font-size-sm;
+
+$nav-item-link-bg:                transparent;
+$nav-item-link-color:             $gray-800;
+
+$nav-item-link-active-bg:         $gray-200;
+$nav-item-link-active-color:      $primary;
+//  Core
+
+.grid-menu {
+
+  [class*="col-"] {
+    border-right: $border-color solid 1px;
+    border-bottom: $border-color solid 1px;
+  }
+
+  @include media-breakpoint-down(lg) {
+
+    [class*="col-"]:nth-last-child(-n+2) {
+      border-bottom-width: 1px;
+    }
+
+    [class*="col-"]:nth-child(1n) {
+      border-right-width: 1px;
+    }
+
+    [class*="col-"]:nth-child(2n) {
+      border-right-width: 0;
+    }
+  }
+
+  [class*="col-"]:nth-last-child(-n+1) {
+    border-bottom-width: 0;
+  }
+
+  &.grid-menu-3col {
+
+    @include media-breakpoint-up(lg) {
+
+      [class*="col-"]:nth-last-child(-n+3) {
+        border-bottom-width: 0;
+      }
+
+      [class*="col-"]:nth-child(2n) {
+        border-right-width: 1px;
+      }
+
+      [class*="col-"]:nth-child(3n) {
+        border-right-width: 0;
+      }
+    }
+  }
+
+  & > .btn {
+    display: block;
+    border: 0;
+    min-width: 100%;
+  }
+}
+
+// Grid dividers
+
+.divider-v {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  min-height: 26px;
+  right: 0;
+  width: 1px;
+  background: $border-color;
+  overflow: hidden;
+
+  @include media-breakpoint-down(lg) {
+    &.divider-v-lg {
+      top: auto;
+      bottom: 0;
+      right: auto;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      min-height: 1px;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    &.divider-v-md {
+      top: auto;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      min-height: 1px;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    &.divider-v-md {
+      display: none;
+    }
+  }
+}
+
+// Alternate
+
+.active > .nav-link-icon {
+  opacity: 1 !important;
+}
+
+.nav {
+  &.nav-lg {
+    .nav-item {
+      .nav-link {
+        padding: ($nav-link-padding-y * 1.5) ($nav-link-padding-x * 1.5);
+        position: relative;
+      }
+    }
+  }
+}
+
+// Alternate 2
+
+.nav {
+  &.nav-alt {
+    .nav-item {
+      .nav-link {
+        @include border-left-radius(0 !important);
+
+        &::before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 4px;
+          content: '';
+          transition: $transition-base;
+          opacity: 0;
+          height: 0;
+          visibility: hidden;
+        }
+
+        &.active,
+        &:hover {
+          &::before {
+            opacity: 1;
+            height: 100%;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav {
+  .nav-item {
+    .nav-link {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      background: $nav-item-link-bg;
+      color: $nav-item-link-color;
+      transition: $transition-base;
+      margin: 1px 0;
+
+      &.active,
+      &:hover {
+        background: $nav-item-link-active-bg;
+        color: $nav-item-link-active-color;
+      }
+
+      .nav-link-icon {
+        width: $nav-item-icon-size;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 5px;
+        font-size: $font-size-lg;
+
+        & > svg {
+          width: 70%;
+          max-width: 70%;
+        }
+      }
+
+      &.disabled {
+        opacity: .7;
+      }
+    }
+  }
+
+  &.nav-pills-rounded {
+    .nav-item {
+      .nav-link {
+        @include border-radius($border-radius-lg * 2);
+      }
+    }
+  }
+}
+
+// Vertical colors
+
+@each $color, $value in $theme-colors {
+  .nav-neutral-#{$color} {
+    .nav-item {
+      .nav-link {
+        &.active,
+        &:hover {
+          color: $value;
+          background: rgba($value, .05);
+
+          &::before {
+            background: $value;
+          }
+        }
+      }
+    }
+  }
+
+  .nav-#{$color} {
+    .nav-item {
+      .nav-link {
+        &.active,
+        &:hover {
+          color: color-yiq($value);
+          background: $value;
+
+          &::before {
+            background: $value;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav-transparent {
+  .nav-item {
+    .nav-link {
+      &.active,
+      &:hover {
+        background: transparent;
+
+        &::before {
+          background: transparent;
+        }
+      }
+
+      &.text-white-50 {
+        &.active,
+        &:hover {
+          color: $white !important;
+        }
+      }
+
+      &.text-black-50 {
+        &.active,
+        &:hover {
+          color: $black !important;
+        }
+      }
+    }
+  }
+}
+
+.nav-transparent-alt {
+  .nav-item {
+    .nav-link {
+      &.text-white-50 {
+        &.active,
+        &:hover {
+          background: rgba($white, .05);
+
+          &::before {
+            background: rgba($white, .05);
+          }
+        }
+      }
+
+      &.text-black-50 {
+        &.active,
+        &:hover {
+          background: rgba($black, .05);
+
+          &::before {
+            background: rgba($black, .05);
+          }
+        }
+      }
+    }
+  }
+}

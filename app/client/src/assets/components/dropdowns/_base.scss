@@ -1,0 +1,94 @@
+//  Core
+
+.btn-group {
+  transition: $transition-base;
+
+  & > .btn {
+    transform: translateY(0px);
+  }
+
+  &:hover {
+    & > .btn {
+      transform: translateY(-2px);
+    }
+  }
+}
+.dropdown-item {
+  transition: $transition-base;
+}
+
+// Dropdown menu
+
+.dropdown-menu {
+  box-shadow: $dropdown-box-shadow;
+  display: block;
+  transition: visibility .25s,opacity .25s;
+  opacity: 0;
+  visibility: hidden;
+  outline: none !important;
+
+  &.dropdown {
+    opacity: 1;
+    width: 80%;
+  }
+
+  &.show {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    z-index: 10;
+  }
+}
+
+// Remove toggle caret
+
+.dropdown-toggle.no-caret {
+  &::after {
+    display: none;
+  }
+}
+
+// Integrations
+
+.dropdown-menu {
+
+  & > .bg-composed-wrapper {
+    margin: (-($dropdown-padding-y)) -1px -2px;
+    z-index: 5;
+    top: -1px;
+  }
+
+  & > .list-group-flush:last-of-type {
+    .list-group-item:last-child {
+      @include border-bottom-radius(inherit !important);
+    }
+  }
+
+  & > .list-group-flush,
+  & > .card-body {
+    &:last-of-type {
+      @include border-bottom-radius(inherit !important);
+    }
+  }
+
+  & > .scroll-area {
+    height: 10rem;
+  }
+}
+
+.dropdown-menu-lg {
+  min-width: 15rem;
+}
+
+.dropdown-menu-xl {
+  min-width: 21rem;
+}
+
+.dropdown-menu-xxl {
+  min-width: 30rem;
+}
+
+.dropdown-toggle::after {
+  position: relative;
+  top: 2px;
+}

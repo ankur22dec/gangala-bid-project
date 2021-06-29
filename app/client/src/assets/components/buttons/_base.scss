@@ -1,0 +1,318 @@
+//  Core
+
+.btn {
+  transition: all .2s ease-out;
+  @include border-radius($border-radius-xs);
+
+  &:not(:disabled):hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-wrapper--label:not(:first-child) {
+    margin-left: ($spacer / 2);
+  }
+
+  .btn-wrapper--label {
+    display: inline-block;
+
+    & + .btn-wrapper--icon {
+      margin-left: ($spacer / 2);
+    }
+  }
+
+  &.btn-transition-none {
+    &:hover {
+      transform: none !important;
+    }
+  }
+}
+
+.btn-pill {
+  @include border-radius($border-radius-lg * 6);
+}
+
+.btn-square {
+  @include border-radius(1px);
+}
+
+.btn-icon-transition {
+  transition: $transition-base;
+}
+
+.btn:hover {
+  .btn-icon-transition {
+    transform: scale(1.1);
+  }
+}
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    box-shadow: 0 0.25rem 0.55rem rgba($value, .35);
+
+    &:not(:disabled):active,
+    &:not(:disabled):focus,
+    &:not(:disabled):hover {
+      box-shadow: 0 0.22rem 0.525rem rgba($value, .4), 0 0.0625rem 0.385rem rgba($value, .54);
+    }
+
+    &:focus,
+    &.active,
+    &:hover {
+      .btn-wrapper--icon {
+        svg path {
+          fill: color-yiq($value);
+        }
+      }
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-neutral-#{$color} {
+    background: transparentize($value, .85);
+    color: $value;
+    border-color: transparent;
+
+    @if $color == "secondary" {
+      color: color-yiq($value);
+    }
+
+    &.active,
+    &:focus,
+    &:hover {
+      background: $value;
+      color: color-yiq($value);
+
+      .btn-wrapper--icon {
+        svg path {
+          fill: color-yiq($value);
+        }
+      }
+    }
+  }
+}
+
+@each $color, $value in $brand-colors {
+  .btn-#{$color} {
+    box-shadow: 0 0.25rem 0.55rem rgba($value, .35);
+    @include button-variant($value, $value);
+
+    &:not(:disabled):active,
+    &:not(:disabled):focus,
+    &:not(:disabled):hover {
+      box-shadow: 0 0.22rem 0.525rem rgba($value, .4), 0 0.0625rem 0.385rem rgba($value, .54);
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+
+    &:not(:disabled):hover {
+      box-shadow: 0 0.22rem 0.525rem rgba($value, .4), 0 0.0625rem 0.385rem rgba($value, .54);
+    }
+  }
+}
+
+.btn-spinner {
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-link {
+  span {
+    position: relative;
+    transition: $transition-base;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      visibility: hidden;
+      transform: scaleX(0);
+      transition: all 0.3s ease-in-out 0s;
+    }
+  }
+
+  &:hover {
+    span:before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+  }
+}
+@each $color, $value in $theme-colors {
+  .btn-link-#{$color} {
+
+    span {
+      color: $value;
+
+      &::before {
+        background-color: $value;
+      }
+    }
+
+    &:hover {
+      span {
+        color: darken($value, 10%);
+      }
+    }
+  }
+}
+.btn-link {
+  font-weight: $font-weight-normal;
+  color: $link-color;
+  text-decoration: $link-decoration;
+
+  @include hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+    transform: none;
+  }
+
+  &:focus,
+  &.focus {
+    text-decoration: $link-hover-decoration;
+    box-shadow: none;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $btn-link-disabled-color;
+    pointer-events: none;
+  }
+}
+
+// Gradients
+
+.btn-gradient {
+  border: 0;
+  position: relative;
+  color: $white;
+
+  &::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: $white;
+    opacity: 0;
+    transition: $transition-base;
+    content: '';
+  }
+
+  &:active,
+  &:hover {
+    color: $white;
+
+    &::after {
+      opacity: .15;
+    }
+  }
+}
+
+.btn-gradient-inverse {
+  color: $black;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: $black !important;
+  }
+}
+
+
+// Icons
+
+.btn-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+}
+
+.btn-animated-icon-sm,
+.btn-animated-icon {
+  transition: all 0.35s;
+  overflow: hidden;
+  position: relative;
+
+  .btn-wrapper--icon {
+    transform: scale(1);
+    transform-origin: center center;
+    transition: transform .3s;
+
+    & > * {
+      transition: none;
+    }
+  }
+
+  &:hover {
+    .btn-wrapper--icon {
+      transform: scale(1.4);
+    }
+  }
+}
+
+.btn-animated-icon-sm:hover {
+  .btn-wrapper--icon {
+    transform: scale(1.2);
+  }
+}
+
+// Button input select
+
+.btn-input-select {
+  border: $gray-400 solid 2px;
+  @include border-radius($border-radius);
+  transition: $btn-transition;
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: ($spacer) ($spacer * 2) ($spacer / 2);
+
+  .selected-icon {
+    opacity: 0;
+    @include border-radius(100%);
+    visibility: hidden;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $transition-base;
+    background: $success;
+    color: $white;
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    border: $white solid 2px;
+  }
+
+  &:hover {
+    border-color: $gray-700;
+    color: $black;
+    background: $gray-100;
+  }
+
+  &.active {
+    border-color: $success;
+    background: $white;
+
+    &:hover {
+      background: $white;
+    }
+
+    .selected-icon {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

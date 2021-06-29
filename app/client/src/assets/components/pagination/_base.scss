@@ -1,0 +1,138 @@
+//  Core
+.pagination {
+  margin: 0;
+
+  .page-link {
+    @include border-radius($border-radius-xs !important);
+    margin: 0 ($spacer / 3.5);
+    transition: $transition-base;
+    position: relative;
+    font-weight: bold;
+    border-color: $gray-600;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .page-item {
+    &.active {
+      .page-link {
+        box-shadow: $box-shadow-sm;
+
+        &:hover {
+          color: color-yiq($primary);
+        }
+      }
+    }
+
+    &.pagination-first .page-link,
+    &.pagination-prev .page-link,
+    &.pagination-last .page-link,
+    &.pagination-next .page-link {
+      padding: 0 $pagination-padding-x;
+    }
+  }
+}
+
+// Color
+
+@each $color, $value in $theme-colors {
+  .pagination-#{$color} {
+
+    .page-item {
+
+      .page-link:hover {
+        color: $value;
+        background: rgba($value, .05);
+        border-color: $value;
+      }
+
+      &.active {
+        .page-link {
+          background: $value;
+          color: color-yiq($value);
+          border-color: $value;
+          box-shadow: 0 0.313rem 0.8rem rgba($value, .5), 0 0.126rem 0.225rem rgba($value, .3)
+        }
+      }
+    }
+  }
+}
+
+// Sizing
+
+.pagination {
+  .page-item {
+    .page-link {
+      padding: 0;
+      min-width: 36px;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+    }
+  }
+
+  &.pagination-icons {
+    .page-item {
+      .page-link {
+        &::before {
+          min-width: 36px;
+          height: 36px;
+          line-height: 36px;
+          font-size: 1.55rem;
+        }
+      }
+    }
+  }
+}
+
+.pagination-sm {
+  .page-item {
+    .page-link {
+      padding: 0;
+      width: 26px;
+      min-width: 26px;
+      height: 26px;
+      line-height: 26px;
+    }
+  }
+
+  &.pagination-icons {
+    .page-item {
+      .page-link {
+        &::before {
+          font-size: 1.15rem;
+          width: 26px;
+          height: 26px;
+          line-height: 26px;
+        }
+      }
+    }
+  }
+}
+
+.pagination-lg {
+  .page-item {
+    .page-link {
+      padding: 0;
+      min-width: 48px;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &.pagination-icons {
+    .page-item {
+      .page-link {
+        &::before {
+          font-size: 1.95rem;
+          width: 48px;
+          height: 48px;
+          line-height: 48px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+export { default as Homepage } from './Homepage';
+export { default as Dashboard } from './Dashboard';
+export { default as Orders } from './Orders';
+export { default as Products } from './Products';
+export { default as Customers } from './Customers';
+export { default as PageCalendar } from './PageCalendar';
+export { default as ProductsFilters } from './ProductsFilters';
+export { default as Transactions } from './Transactions';
+export { default as Settings } from './Settings';
+export { default as PageLoginIllustration } from './PageLoginIllustration';
+export { default as PageRegisterIllustration } from './PageRegisterIllustration';
+export { default as PageRecoverIllustration } from './PageRecoverIllustration';
+export { default as PageError404 } from './PageError404';
